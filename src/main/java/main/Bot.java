@@ -17,22 +17,31 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "overone_picture_bot";
+        return "picture_by_Olia_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "5530700213:AAFeWy0uLPY2R6ZN8nkZl1KVffOKB3IW6dg";
+        return "5733855600:AAFhzoS8pn-sAG0qm0cdZpzCEp6pX0vQkZA";
     }
 
-    //cat AgACAgIAAxkBAAMOY35hT-vj03iM8ENwV6s2ncHjHHoAAvrFMRuZifBLTxPyAn685DkBAAMCAANzAAMrBA
-    //dog AgACAgIAAxkBAAMQY35h2ThBJcqTNF_tz05hFSiRbmAAAvPCMRvFRflLFDf8UXoMLpUBAAMCAANzAAMrBA
-    //fox AgACAgIAAxkBAAMXY35igRWxCCziCzloO7PPSIlk0nsAAvnCMRvFRflLy5bPBsWXt6UBAAMCAANzAAMrBA
-    //raccoon AgACAgIAAxkBAAMTY35iBmO7RvX5QqjAKbY3ZlBnd28AAvbCMRvFRflLRLSRTYfskCMBAAMCAANzAAMrBA
-    //tiger AgACAgIAAxkBAAMVY35iH--qOTY1ElzB5uaeRXysNQoAAvjCMRvFRflLbW9xSqJ9GpUBAAMCAANzAAMrBA
+    //cAT AgACAgIAAxkBAAMEY4H8n2Ov1RoeJlpO9dt2wJPRbfsAAv3EMRsVURFIwwx8P_FB1b0BAAMCAANzAAMrBA
+    //dog AgACAgIAAxkBAAMGY4H8zs0cT78AAUGxbzpQWPkNqxuWAAIBxTEbFVERSOS7tx67s_mvAQADAgADcwADKwQ
+    //fox AgACAgIAAxkBAAMIY4H886YdeOc18I67YechN67g6AIAAgLFMRsVURFIWhRhVlCeRLEBAAMCAANzAAMrBA
+    //raccoon AgACAgIAAxkBAAMKY4H9B5RBV3XCi3YqtyhQzUUnhbsAAgPFMRsVURFI5C_-sJu58FkBAAMCAANzAAMrBA
+    //tiger AgACAgIAAxkBAAMMY4H9FcHnQPxwSQcm2gFP-YPmziQAAgTFMRsVURFImXiD-MZGFo8BAAMCAANzAAMrBA
 
     @Override
     public void onUpdateReceived(Update update) {
+        /*SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(update.getMessage().getChatId().toString());
+        String id = String.valueOf(update.getMessage().getPhoto().get(0).getFileId());
+        sendMessage.setText(id);
+        try {
+            execute(sendMessage);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
+        }*/
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(update.getMessage().getChatId().toString());
@@ -58,31 +67,32 @@ public class Bot extends TelegramLongPollingBot {
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setChatId(update.getMessage().getChatId().toString());
         InputFile inputFile = new InputFile();
+
         switch (update.getMessage().getText()) {
             case "Cat":
-                inputFile.setMedia("AgACAgIAAxkBAAMOY35hT-vj03iM8ENwV6s2ncHjHHoAAvrFMRuZifBLTxPyAn685DkBAAMCAANzAAMrBA");
+                inputFile.setMedia("AgACAgIAAxkBAAMEY4H8n2Ov1RoeJlpO9dt2wJPRbfsAAv3EMRsVURFIwwx8P_FB1b0BAAMCAANzAAMrBA");
                 break;
             case "Dog":
-                inputFile.setMedia("AgACAgIAAxkBAAMQY35h2ThBJcqTNF_tz05hFSiRbmAAAvPCMRvFRflLFDf8UXoMLpUBAAMCAANzAAMrBA");
+                inputFile.setMedia("AgACAgIAAxkBAAMGY4H8zs0cT78AAUGxbzpQWPkNqxuWAAIBxTEbFVERSOS7tx67s_mvAQADAgADcwADKwQ");
                 break;
             case "Fox":
-                inputFile.setMedia("AgACAgIAAxkBAAMXY35igRWxCCziCzloO7PPSIlk0nsAAvnCMRvFRflLy5bPBsWXt6UBAAMCAANzAAMrBA");
+                inputFile.setMedia("AgACAgIAAxkBAAMIY4H886YdeOc18I67YechN67g6AIAAgLFMRsVURFIWhRhVlCeRLEBAAMCAANzAAMrBA");
                 break;
             case "Raccoon":
-                inputFile.setMedia("AgACAgIAAxkBAAMTY35iBmO7RvX5QqjAKbY3ZlBnd28AAvbCMRvFRflLRLSRTYfskCMBAAMCAANzAAMrBA");
+                inputFile.setMedia("AgACAgIAAxkBAAMKY4H9B5RBV3XCi3YqtyhQzUUnhbsAAgPFMRsVURFI5C_-sJu58FkBAAMCAANzAAMrBA");
                 break;
             case "Tiger":
-                inputFile.setMedia("AgACAgIAAxkBAAMVY35iH--qOTY1ElzB5uaeRXysNQoAAvjCMRvFRflLbW9xSqJ9GpUBAAMCAANzAAMrBA");
+                inputFile.setMedia("AgACAgIAAxkBAAMMY4H9FcHnQPxwSQcm2gFP-YPmziQAAgTFMRsVURFImXiD-MZGFo8BAAMCAANzAAMrBA");
                 break;
-
-
         }
+        sendPhoto.setPhoto(inputFile);
         try {
             execute(sendPhoto);
         } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
 
     }
+
 }
