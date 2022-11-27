@@ -32,7 +32,7 @@ public class Bot extends TelegramLongPollingBot {
     //tiger AgACAgIAAxkBAAMMY4H9FcHnQPxwSQcm2gFP-YPmziQAAgTFMRsVURFImXiD-MZGFo8BAAMCAANzAAMrBA
 
     @Override
-    public void onUpdateReceived(Update update) {
+    public  void onUpdateReceived(Update update) {
         /*SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(update.getMessage().getChatId().toString());
         String id = String.valueOf(update.getMessage().getPhoto().get(0).getFileId());
@@ -68,7 +68,7 @@ public class Bot extends TelegramLongPollingBot {
         sendPhoto.setChatId(update.getMessage().getChatId().toString());
         InputFile inputFile = new InputFile();
 
-        switch (update.getMessage().getText()) {
+        switch  (update.getMessage().getText()) {
             case "Cat":
                 inputFile.setMedia("AgACAgIAAxkBAAMEY4H8n2Ov1RoeJlpO9dt2wJPRbfsAAv3EMRsVURFIwwx8P_FB1b0BAAMCAANzAAMrBA");
                 break;
@@ -84,7 +84,9 @@ public class Bot extends TelegramLongPollingBot {
             case "Tiger":
                 inputFile.setMedia("AgACAgIAAxkBAAMMY4H9FcHnQPxwSQcm2gFP-YPmziQAAgTFMRsVURFImXiD-MZGFo8BAAMCAANzAAMrBA");
                 break;
+
         }
+
         sendPhoto.setPhoto(inputFile);
         try {
             execute(sendPhoto);
